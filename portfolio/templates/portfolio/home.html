@@ -1,0 +1,94 @@
+{% extends 'portfolio/base.html' %}
+{% load staticfiles %}
+{% block content %}
+            {% if user.is_authenticated %}
+                <div class="page-container">
+
+                    <h2 class="top-menu">Hello {{ user.first_name }},</h2>
+                    <p>Please choose from below options.</p>
+
+                </div>
+            {% endif %}
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-14">
+                        <div class="links">
+                            <!-- Example row of columns -->
+                            <div class="row">
+                                <div class="col-md-3" style="padding-left: 1%;">
+                                    <div class="thumbnail">
+                                        <img src="{% static "images/customer.jpg" %}" alt="customer"/>
+                                        <div class="caption">
+                                        <br>
+
+                                            <h2><b>Customer</b></h2>
+                                             <br>
+                                            <p>We see our success in our customers success, it gives us an immense
+                                                pleasure when our advises turn out to be fruitful. </p>
+                                                <br>
+                                                <br>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:customer_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"  style="padding-left: 1%">
+                                     <div class="thumbnail">
+                                        <img src="{% static "images/nonstock.jpg" %}" alt="non-stock"/>
+                                        <div class="caption">
+                                            <h2><b>Investments</b></h2>
+                                            <br>
+                                            <p>Our team also provides advises for Non-Stock investments.</p>
+                                            <br>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:investment_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                             <br>
+                                             <br>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3" style="padding-right: 1%">
+                                     <div class="thumbnail">
+                                        <img src="{% static "images/stocks.jpg" %}" alt="stocks"/>
+                                        <div class="caption">
+                                            <h2><b>Stock Portfolio</b></h2>
+                                            <br>
+                                            <p>Our Stock portfolios vary across industries.</p>
+                                            <br>
+                                            <br>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:stock_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                             <br>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <div class="col-md-3" style="padding-right: 1%">
+                                    <div class="thumbnail">
+                                        <img src="{% static "images/mutualfunds.jpg" %}" alt="stocks"/>
+                                        <div class="caption">
+                                            <h2><b>Mutual Funds</b></h2>
+                                            <br>
+                                            <p>Our Stock portfolios vary across industries.</p>
+                                            <br>
+                                            <br>
+                                            <p><a class="btn btn-primary" href="{% url 'portfolio:mutual_funds_list' %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                             <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    </html>
+{% endblock %}
