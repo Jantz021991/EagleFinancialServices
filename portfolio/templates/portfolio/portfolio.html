@@ -10,10 +10,15 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/portfolio.css' %}">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Eagle Financial Services</title>
     <script>
 function goBack() {
     window.history.back()
+}
+function pagePrint() {
+    window.print();
 }
 </script>
 </head>
@@ -36,7 +41,8 @@ function goBack() {
         </div>
     </div>
        </div>
-<button onclick="goBack()">Go Back</button>
+<button onclick="goBack()">Go Back &#x2190;</button>
+<button onclick="pagePrint()">Print Portfolio  <i class="fa fa-print"></i></button>
 </div>
 </div>
 <div class="row">
