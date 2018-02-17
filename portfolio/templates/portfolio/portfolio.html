@@ -241,9 +241,9 @@ function pagePrint() {
         <tbody>
             <tr>
 
-                <td>{{ sum_fund_purchase_price }}</td>
                 <td>{{ sum_fund_current_price }}</td>
-                <td>{{ sum_fund_current_price|sub:sum_fund_purchase_price }}</td>
+                <td>{{ sum_fund_purchase_price }}</td>
+                <td>{{ sum_fund_purchase_price|sub:sum_fund_current_price }}</td>
             </tr>
         </tbody>
     </table>

@@ -119,7 +119,7 @@ class Mutual_Funds(models.Model):
         self.save()
 
     def initial_mutual_fund_value(self):
-        return self.shares * self.purchase_price
+        return  self.purchase_price* self.shares
 
     def current_mutual_fund_price(self):
         return self.shares * self.current_price
