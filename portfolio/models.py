@@ -102,6 +102,7 @@ class Mutual_Funds(models.Model):
     shares = models.DecimalField (max_digits=10, decimal_places=1)
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
     purchase_date = models.DateField(default=timezone.now, blank=True, null=True)
+    current_price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def created(self):
         self.recent_date = timezone.now()

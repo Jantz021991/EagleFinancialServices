@@ -178,7 +178,8 @@ def portfolio(request,pk):
    sum_purchase_value = Stock.objects.filter(customer=pk).aggregate(total=(Sum(F('purchase_price')*F('shares'))))['total']
    sum_acquired_value = Investment.objects.filter(customer=pk).aggregate(Sum('acquired_value'))
    sum_recent_value = Investment.objects.filter(customer=pk).aggregate(Sum('recent_value'))
-
+   sum_fund_purchase_price = Mutual_Funds.objects.filter(customer=pk).aggregate(Sum('purchase_price'))
+   sum_fund_current_price= Mutual_Funds.objects.filter(customer=pk).aggregate(Sum('current_price'))
    # Initialize the value of the stocks
    sum_current_stocks_value = 0
    sum_of_initial_stock_value = 0
@@ -190,6 +191,8 @@ def portfolio(request,pk):
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks, 'customer':customer,
                                                        'mutual_funds':mutual_funds,
+                                                       'sum_fund_current_price':sum_fund_current_price,
+                                                       'sum_fund_purchase_price':sum_fund_purchase_price,
                                                       'sum_acquired_value': sum_acquired_value,
                                                        'sum_purchase_value': sum_purchase_value,
                                                        'sum_recent_value':sum_recent_value,
@@ -254,27 +257,3 @@ def mutual_funds_delete(request, pk):
    mutual_funds = Mutual_Funds.objects.filter(purchase_date__lte=timezone.now())
    return render(request, 'portfolio/mutual_funds_list.html', {'mutual_funds': mutual_funds})
 
-@login_required
-def portfolio_view(request):
-    # Create the HttpResponse object with the appropriate PDF headers.
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="CustomerPortfolio.pdf"'
-    buffer = BytesIO()
-
-    # Create the PDF object, using the response object as its "file."
-    p = canvas.Canvas(response)
-
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 100, "Hello world.")
-
-    # Close the PDF object cleanly, and we're done.
-    p.showPage()
-    p.save()
-
-    # Get the value of the BytesIO buffer and write it to the response.
-    pdf = buffer.getvalue()
-    buffer.close()
-    response.write(pdf)
-
-    return response

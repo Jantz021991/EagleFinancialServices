@@ -20,8 +20,8 @@ class StockList(admin.ModelAdmin):
     ordering = ['customer']
 
 class MutualFundsList(admin.ModelAdmin):
-    list_display =('customer','symbol','name','shares','purchase_price','purchase_date')
-    list_filter = ('customer','symbol','name','shares','purchase_price','purchase_date')
+    list_display =('customer','symbol','name','shares','purchase_price','current_price','purchase_date')
+    list_filter = ('customer','symbol','name','shares','purchase_price','current_price','purchase_date')
     search_fields = ('customer','symbol','name')
     ordering = ['customer']
 
