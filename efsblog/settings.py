@@ -118,8 +118,6 @@ DATABASES = {
         'PASSWORD': '9d8d2a6fa309d49cb2d1dab0df88e4923057b8aee5ecfc2a3125788d25c781a4',
         'HOST': 'ec2-54-221-234-62.compute-1.amazonaws.com',
         'PORT': '5432',
-        #     'ENGINE': 'django.db.backends.sqlite3',
-        #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 
 }

@@ -24,5 +24,5 @@ class StockForm(forms.ModelForm):
 class MutualFundsForm(forms.ModelForm):
     class Meta:
         model = Mutual_Funds
-        fields = ('customer', 'symbol', 'name', 'shares', 'purchase_price', 'purchase_date',)
+        fields = ('customer', 'symbol', 'name', 'shares', 'purchase_price', 'current_price','purchase_date',)
 

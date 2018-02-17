@@ -87,6 +87,16 @@ class Stock(models.Model):
         share_value = open_price
         return float(share_value) * float(self.shares)
 
+    def current_stock_value_inr(self):
+        main_api = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE'
+        from_currency = '&from_currency=USD'
+        to_currency = '&to_currency=INR'
+        api_key = '&apikey=DI0T66UT5MM7WFHK'
+        url = main_api + from_currency + to_currency + api_key
+        json_data = requests.get(url).json()
+        exc_rate = float(json_data["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
+        inr_rate = exc_rate
+        return float(inr_rate)
 
     def created(self):
         self.recent_date = timezone.now()
@@ -107,6 +117,12 @@ class Mutual_Funds(models.Model):
     def created(self):
         self.recent_date = timezone.now()
         self.save()
+
+    def initial_mutual_fund_value(self):
+        return self.shares * self.purchase_price
+
+    def current_mutual_fund_price(self):
+        return self.shares * self.current_price
 
     def __str__(self):
         return str(self.customer)
