@@ -68,7 +68,7 @@ function pagePrint() {
           <tbody>
                 <td>{{sum_of_initial_stock_value|add:sum_acquired_value.acquired_value__sum|add:sum_fund_purchase_price}}</td>
                 <td>{{sum_current_stocks_value|add:sum_recent_value.recent_value__sum|add:sum_fund_current_price   }}</td>
-                <td>{{sum_of_initial_stock_value|add:sum_acquired_value.acquired_value__sum|add:sum_fund_purchase_price|sub:sum_current_stocks_value|sub:sum_recent_value.recent_value__sum|sub:sum_fund_current_price }}</td>
+                <td>{{sum_current_stocks_value|add:sum_recent_value.recent_value__sum|add:sum_fund_current_price|sub:sum_of_initial_stock_value|sub:sum_acquired_value.acquired_value__sum|sub:sum_fund_purchase_price}}</td>
 
           </tbody>
       </table>
