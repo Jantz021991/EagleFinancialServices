@@ -1,5 +1,6 @@
 from django.utils import timezone
 from .models import *
+from efsblog import settings
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -12,7 +13,10 @@ from rest_framework import status
 from .serializers import CustomerSerializer
 from io import BytesIO
 from reportlab.pdfgen import canvas
-from django.http import HttpResponse
+from .forms import EmailForm
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.mail import send_mail,  EmailMessage
+from django.shortcuts import render, get_object_or_404, render_to_response
 
 
 def home(request):
@@ -264,3 +268,22 @@ def mutual_funds_delete(request, pk):
    mutual_funds = Mutual_Funds.objects.filter(purchase_date__lte=timezone.now())
    return render(request, 'portfolio/mutual_funds_list.html', {'mutual_funds': mutual_funds})
 
+
+# def share(request):
+#     template = 'portfolio/share.html'
+#
+#     if request.method == 'POST':
+#         form = EmailForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             # subject = form.cleaned_data['subject']
+#             # message = form.cleaned_data['message']
+#             # email = form.cleaned_data['email']
+#             # attach = request.FILES['attach']
+#             # mail = EmailMessage(subject, message, 'msdfall2017team3@gmail.com', [email])
+#             # mail.attach(attach.name, attach.read(), attach.content_type)
+#             # mail.send()
+#             pass
+#
+#     else:
+#         form = EmailForm()
+#         return render(request,template, {'form': form})

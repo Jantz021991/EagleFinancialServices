@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^mutual_funds/create/$', views.mutual_funds_new, name='mutual_funds_new'),
     url(r'^mutual_funds/(?P<pk>\d+)/delete/$', views.mutual_funds_delete, name='mutual_funds_delete'),
     url(r'^mutual_funds/(?P<pk>\d+)/edit/$', views.mutual_funds_edit, name='mutual_funds_edit'),
+    # url(r'^customer/share/$', views.share, name='share'),
     url(r'^accounts/profile/$', views.home, name='home'),
     url('^', include('django.contrib.auth.urls')),
     url(r'^customers_json/', views.CustomerList.as_view()),

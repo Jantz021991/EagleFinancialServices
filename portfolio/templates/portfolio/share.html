@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %} Share a Portfolio {% endblock %}
+
+{% block content %}
+{% if email_form %}
+<form method="POST" novalidate>
+<br></br>
+{% csrf_token %}
+{{form.as_p}}
+
+<input type ="submit"  name = "send" value = "Send"/>
+</form>
+{% endif %}
+{% endblock content %}
